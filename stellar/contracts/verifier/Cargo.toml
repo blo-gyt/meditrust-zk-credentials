@@ -1,0 +1,16 @@
+[package]
+name = "meditrust-verifier"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "UltraHonk (Noir) proof verifier contract for the MediTrust credential protocol"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk = { workspace = true, features = ["alloc"] }
+ultrahonk_soroban_verifier = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils", "alloc"] }

@@ -1,0 +1,26 @@
+[workspace]
+resolver = "2"
+members = ["stellar/contracts/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Privacy-preserving healthcare education and credential verification protocol on Stellar/Soroban"
+
+[workspace.dependencies]
+soroban-sdk = { version = "28.0.0", default-features = false }
+
+# Audited UltraHonk (Noir) verifier for Soroban.
+# Upstream: https://github.com/NethermindEth/rs-soroban-ultrahonk
+# Audit:    OpenZeppelin, 31 Aug 2026 (commit 661db07), no Critical/High/Medium findings.
+# Note: implements the *UltraKeccakFlavor* only (non-ZK, no witness hiding). See docs/security-model.md.
+ultrahonk_soroban_verifier = { git = "https://github.com/NethermindEth/rs-soroban-ultrahonk", branch = "main", default-features = false }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+overflow-checks = true

@@ -1,0 +1,20 @@
+/target
+**/target/
+
+# Stellar CLI / localnet state
+.stellar/
+.contract_id
+*.env
+.env
+
+# ZK build artifacts (regenerate with nargo + bb; see docs/zk-pipeline.md)
+circuits/**/target/
+circuits/**/circuit.json
+proof
+vk
+public_inputs
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
